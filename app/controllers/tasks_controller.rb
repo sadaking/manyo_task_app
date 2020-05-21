@@ -13,7 +13,7 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to new_task_path, notice:"タスクを作成しました！"
+      redirect_to task_path, notice:"タスクを作成しました！"
     else
       render :new
     end
@@ -31,6 +31,11 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
     else
       render edit
     end
+  end
+
+  def destroy
+    @task.destroy
+    redirect_to tasks_path, notice: "タスクを削除しました！"
   end
 
   private
