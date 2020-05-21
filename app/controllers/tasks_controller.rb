@@ -13,7 +13,8 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to task_path, notice:"タスクを作成しました！"
+      flash[:notice] = "タスクを作成しました！"
+      redirect_to tasks_path
     else
       render :new
     end
@@ -27,7 +28,8 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def update
     if @task.update(task_params)
-      redirect_to tasks_path, notice: "タスクを編集しました！"
+      flash[:notice] = "タスクを編集しました！"
+      redirect_to tasks_path
     else
       render edit
     end
@@ -35,7 +37,8 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @task.destroy
-    redirect_to tasks_path, notice: "タスクを削除しました！"
+    flash[:notice] = "タスクを削除しました！"
+    redirect_to tasks_path
   end
 
   private
