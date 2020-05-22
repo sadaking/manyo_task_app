@@ -3,7 +3,7 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
 
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(id: "DESC")
   end
 
   def new
