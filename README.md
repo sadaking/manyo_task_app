@@ -19,7 +19,7 @@ Ruby on Rails 5.2.4.2
 >$ heroku create
 
 ###Herokuにデプロイ
->$ git push heroku master heroku
+>$ git push heroku master
 
 ###データベースの移行
 
@@ -27,3 +27,5 @@ Ruby on Rails 5.2.4.2
 
 ###アプリケーションにアクセスを行う
 >Herokuアプリのアドレスは、下記URLの形でアクセスできる。
+
+>https://アプリ名.herokuapp.com/ 
