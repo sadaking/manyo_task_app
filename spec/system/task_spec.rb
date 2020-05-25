@@ -4,8 +4,8 @@ RSpec.describe 'タスク管理機能', type: :system do
     # 「タスク一覧画面」や「タスク詳細画面」などそれぞれのテストケースで、before内のコードが実行される
     # 各テストで使用するタスクを1件作成する
     # 作成したタスクオブジェクトを各テストケースで呼び出せるようにインスタンス変数に代入
-    @task = FactoryBot.create(:task, title: 'task')
-    @second_task = FactoryBot.create(:task, title: 'new_task')
+    @task = FactoryBot.create(:task, title: 'task', content: 'submit task', deadline: '2020-05-23')
+    @second_task = FactoryBot.create(:task, title: 'new_task',content: 'difficult task', deadline: '2020-05-24')
   end
   describe 'タスク一覧画面' do
     context 'タスクを作成した場合' do
@@ -21,9 +21,9 @@ RSpec.describe 'タスク管理機能', type: :system do
         # あらかじめタスク並び替えの確認テストで使用するためのタスクを二つ作成する
         # （上記と全く同じ記述が繰り返されてしまう！）
         visit tasks_path
-        
+
         task_list = all('.task_row') # タスク一覧を配列として取得するため、View側でidを振っておく
-        
+
         expect(task_list[0]).to have_content 'new_task'
         expect(task_list[1]).to have_content 'task'
       end
@@ -35,6 +35,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit new_task_path
         fill_in 'タスク名', with: '万葉課題'
         fill_in 'タスク詳細', with: '万葉課題の提出'
+        fill_in '終了期限', with: '2020/05/23'
         click_on "登録する"
         expect(page).to have_content '万葉課題の提出'
       end
@@ -43,7 +44,7 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe 'タスク詳細画面' do
      context '任意のタスク詳細画面に遷移した場合' do
        it '該当タスクの内容が表示されたページに遷移する' do
-         task_id = FactoryBot.create(:task, title: 'dive_text', content: 'submit task')
+         task_id = FactoryBot.create(:task, title: 'dive_text', content: 'submit task', deadline: '2020-05-23')
          visit task_path(task_id)
          expect(page).to have_content 'dive_text', 'submit task'
        end
