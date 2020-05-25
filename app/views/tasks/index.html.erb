@@ -1,18 +1,21 @@
 <h1>task一覧</h1>
 <p><%= notice %></p>
+<p><%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %></p>
 <table>
   <tr>
     <th>タスク名</th>
     <th>タスク詳細</th>
+    <th>終了期限</th>
   </tr>
 <% @tasks.each do |task| %>
   <tr>
     <td class="task_row"><%= task.title %></td>
     <td><%= task.content %></td>
+    <td><%= task.deadline.strftime("%Y年%m月%d日")%></td>
     <td><%= link_to '詳細', task_path(task.id) %></td>
     <td><%= link_to "編集", edit_task_path(task.id) %></td>
     <td><%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
   </tr>
 <% end %>
 </table>
-<%= link_to '新しくブログを投稿する', new_task_path %>
+<%= link_to '新しくタスクを投稿する', new_task_path %>

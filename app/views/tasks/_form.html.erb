@@ -17,6 +17,10 @@
     <%= form.label :content, "タスク詳細" %>
     <%= form.text_field :content %>
   </div>
+  <div class="task_deadline">
+    <%= form.label :deadline, "終了期限"%>
+    <%= form.date_field :deadline %>
+  </div>
   <%= form.submit name="登録する" %>
 <% end %>
 <%= link_to 'task一覧画面に戻る', tasks_path %>
