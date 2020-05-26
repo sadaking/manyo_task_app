@@ -4,8 +4,8 @@ RSpec.describe 'タスク管理機能', type: :system do
     # 「タスク一覧画面」や「タスク詳細画面」などそれぞれのテストケースで、before内のコードが実行される
     # 各テストで使用するタスクを1件作成する
     # 作成したタスクオブジェクトを各テストケースで呼び出せるようにインスタンス変数に代入
-    @task = FactoryBot.create(:task, title: 'task', content: 'submit task', deadline: '2020-05-23')
-    @second_task = FactoryBot.create(:task, title: 'new_task',content: 'difficult task', deadline: '2020-05-24')
+    @task = FactoryBot.create(:task, title: 'task', content: 'submit task', deadline: '2020-05-23 00:00:00')
+    @second_task = FactoryBot.create(:task, title: 'new_task',content: 'difficult task', deadline: '2020-05-24 00:00:00')
   end
   describe 'タスク一覧画面' do
     context 'タスクを作成した場合' do
