@@ -2,11 +2,11 @@
 <p><%= notice %></p>
 <p><%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %></p>
 
-<%= form_with(scope: :search, url:tasks_path, local: true, method: :get) do |form| %>
+<%= form_with(url:tasks_path, local: true, method: :get) do |form| %>
   <%= form.label :title_search, "タイトル検索" %>
   <%= form.text_field :title %>
   <%= form.label :status_search, "状態検索" %>
-  <%= form.select :status, ["未着手","着手中","完了"],{include_blank:"選択する"}%>
+  <%= form.select :status, [["完了","完了"], ["着手中","着手中"], ["未着手","未着手"]], include_blank: "選択して下さい" %>
   <%= form.hidden_field :search, value:"true" %>
 
   <%= form.submit name="検索する" %>
