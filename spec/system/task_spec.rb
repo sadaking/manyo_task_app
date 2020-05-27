@@ -2,8 +2,8 @@ require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
 
   before do
-    @task = FactoryBot.create(:task, title: 'task', content: 'submit task', deadline: '2020-05-23 00:00:00', status: '完了')
-    @second_task = FactoryBot.create(:task, title: 'new_task',content: 'difficult task', deadline: '2020-05-24 00:00:00', status: '着手中')
+    @task = FactoryBot.create(:task, title: 'task', content: 'submit task', deadline: '2020-05-23', status: '完了', priority: '高')
+    @second_task = FactoryBot.create(:task, title: 'new_task',content: 'difficult task', deadline: '2020-05-24', status: '着手中',priority: '中')
   end
 
   describe 'タスク一覧画面' do
@@ -22,6 +22,27 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(task_list[1]).to have_content 'task'
       end
     end
+
+    context '終了期限（期日)でソートした場合' do
+      it 'タスクが終了期限の降順に並んでいること' do
+        visit tasks_path
+        click_on '終了期限でソートする'
+        task_list = all('.task_deadline')
+        expect(task_list[0]).to have_content '2020年05月24日'
+        expect(task_list[1]).to have_content '2020年05月23日'
+      end
+    end
+
+    context '優先順位でソートした場合' do
+      it 'タスクが優先順位の降順に並んでいること' do
+        visit tasks_path
+        click_on '優先順位でソートする'
+        task_list = all('.task_priority')
+        expect(task_list[0]).to have_content '高'
+        expect(task_list[1]).to have_content '中'
+      end
+    end
+
     context 'scopeメソッドで検索をした場合' do
       it "scopeメソッドでタイトル検索ができる" do
         visit tasks_path
@@ -53,6 +74,8 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in 'タスク名', with: '万葉課題'
         fill_in 'タスク詳細', with: '万葉課題の提出'
         fill_in '終了期限', with: '2020/05/23'
+        select '完了', from: "task_status"
+        select '高', from: "task_priority"
         click_on "登録する"
         expect(page).to have_content '万葉課題の提出'
       end
