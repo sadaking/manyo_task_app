@@ -1,30 +1,44 @@
-<%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @task.errors.count %>件のエラーがあります。</h2>
-      <ul>
-      <% @task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div class="container-fluid">
+  <div class="form-group">
+    <%= form_with(model: @task, local: true) do |form| %>
+      <% if @task.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= @task.errors.count %>件のエラーがあります。</h2>
+          <ul>
+          <% @task.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="task_title">
-    <%= form.label :title, "タスク名" %>
-    <%= form.text_field :title %>
+      <div class="task_title">
+        <%= form.label :title, "タスク名" %>
+        <%= form.text_field :title %>
+      </div>
+      <br>
+      <div class="task_content">
+        <%= form.label :content, "タスク詳細" %>
+        <%= form.text_field :content %>
+      </div>
+      <br>
+      <div class="task_deadline">
+        <%= form.label :deadline, "終了期限"%>
+        <%= form.date_field :deadline %>
+      </div>
+      <br>
+      <div class="task_status">
+        <%= form.label :status, "状態" %>
+        <%= form.select :status, {未着手:"未着手",着手中:"着手中",完了:"完了"}, include_blank: "選択して下さい" %>
+      </div>
+      <br>
+      <div class="task_status">
+        <%= form.label :priority, "優先順位" %>
+        <%= form.select :priority, {高:"高",中:"中",低:"低"}, include_blank: "選択して下さい" %>
+      </div>
+      <br>
+      <%= form.submit name="登録する" %>
+    <% end %>
+    <br>
+    <%= link_to 'task一覧画面に戻る', tasks_path %>
   </div>
-  <div class="task_content">
-    <%= form.label :content, "タスク詳細" %>
-    <%= form.text_field :content %>
-  </div>
-  <div class="task_deadline">
-    <%= form.label :deadline, "終了期限"%>
-    <%= form.date_field :deadline %>
-  </div>
-  <div class="task_status">
-    <%= form.label :status, "状態" %>
-    <%= form.select :status, {未着手:"未着手",着手中:"着手中",完了:"完了"}, include_blank: "選択して下さい" %>
-  </div>
-  <%= form.submit name="登録する" %>
-<% end %>
-<%= link_to 'task一覧画面に戻る', tasks_path %>
+</div>
