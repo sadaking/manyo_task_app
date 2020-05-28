@@ -35,7 +35,7 @@
     <tr>
       <td class="task_row"><%= task.title %></td>
       <td><%= task.content %></td>
-      <td class="task_deadline"><%= task.deadlin.strftime("%Y年%m月%d日")%></td>
+      <td class="task_deadline"><%= task.deadline.strftime("%Y年%m月%d日")%></td>
       <td class><%= task.status %></td>
       <td class="task_priority"><%= task.priority %></td>
       <td><%= link_to '詳細', task_path(task.id) %></td>
