@@ -1,5 +1,7 @@
 {
   "name": "task_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "3"
+  }
 }

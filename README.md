@@ -1,24 +1,31 @@
-# README
+|  カラム  |  データ型 |
+| ---- | ---- |
+|  title  | string  |
+|  content  |  text  |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+##デプロイ方法
+============
 
-* Ruby version
+Ruby on Rails 5.2.4.2
+------------
 
-* System dependencies
+### herokuにログイン
 
-* Configuration
+>$ heroku login
 
-* Database creation
+### 新しいレポジトリを作成
 
-* Database initialization
+>$ heroku create
 
-* How to run the test suite
+###Herokuにデプロイ
+>$ git push heroku master
 
-* Services (job queues, cache servers, search engines, etc.)
+###データベースの移行
 
-* Deployment instructions
+>$ heroku run rails db:migrate
 
-* ...
+###アプリケーションにアクセスを行う
+>Herokuアプリのアドレスは、下記URLの形でアクセスできる。
+
+>https://アプリ名.herokuapp.com/ 
