@@ -31,18 +31,7 @@
       <th>状態</th>
       <th>優先順位</th>
     </tr>
-  <% @tasks.each do |task| %>
-    <tr>
-      <td class="task_row"><%= task.title %></td>
-      <td><%= task.content %></td>
-      <td class="task_deadline"><%= task.deadline.strftime("%Y年%m月%d日")%></td>
-      <td class><%= task.status %></td>
-      <td class="task_priority"><%= task.priority %></td>
-      <td><%= link_to '詳細', task_path(task.id) %></td>
-      <td><%= link_to "編集", edit_task_path(task.id) %></td>
-      <td><%= link_to '削除', task_path(task.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
-    </tr>
-  <% end %>
+  
   </table>
 
   <div class="link_group">
