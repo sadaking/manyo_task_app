@@ -1,14 +1,14 @@
 class TasksController < ApplicationController
 before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+before_action :require_login
 
   def index
     if params[:sort_expired]
-      @tasks = Task.all.order(deadline: :desc).page(params[:page]).per(10)
+      @tasks = current_user.tasks.order(deadline: :desc).page(params[:page]).per(10)
     elsif params[:sort_priority]
-      @tasks = Task.all.order(priority: :asc).page(params[:page]).per(10)
+      @tasks = current_user.tasks.order(priority: :asc).page(params[:page]).per(10)
     else
-      @tasks = Task.all.order(created_at: :desc).page(params[:page]).per(10)
+      @tasks = current_user.tasks.order(created_at: :desc).page(params[:page]).per(10)
     end
 
     if params[:search].present?
@@ -27,7 +27,7 @@ before_action :set_task, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       flash[:notice] = "タスクを作成しました！"
       redirect_to tasks_path
