@@ -16,7 +16,7 @@ class Admin::UsersController < ApplicationController
     if @user.save
       @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to admin_users_path, notice: "ユーザーを作成しました"
+      redirect_to admin_user_path(@user.id), notice: "ユーザーを作成しました"
     else
       render :new
     end
