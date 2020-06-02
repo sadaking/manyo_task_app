@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @tasks = Task.all
+    @tasks = @user.tasks
   end
 
   def edit

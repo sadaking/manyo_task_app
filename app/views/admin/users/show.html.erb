@@ -3,6 +3,7 @@
 </div>
 <div class="container-fluid">
   <div class="form-group">
+    <br>
     <p>ユーザー名: <%= @user.name %></p>
     <p>メールアドレス: <%= @user.email %></p>
     <% if @user.admin == true %>
@@ -34,7 +35,6 @@
         <br>
       <% end %>
     <% end %>
-
-    <%= link_to "ユーザー一覧画面にもどる", admin_users_path %>
+    <%= link_to "管理画面へ", admin_users_path %>
   </div>
 </div>
