@@ -14,3 +14,15 @@
  *= require_tree .
  *= require_self
  */
+
+ .log_tags {
+   text-align: center;
+ }
+
+ .show_style {
+   text-align: center;
+ }
+
+ .new_style {
+   text-align: center;
+ }

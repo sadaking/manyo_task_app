@@ -1,5 +1,11 @@
-<h2>タスク詳細画面</h2>
-<p>タスク名: <%= @task.title %></p>
-<p>タスク詳細: <%= @task.content %></p>
-<p>終了期限：<%= @task.deadline.strftime("%Y年%m月%d日") if @task.deadline.present? %></p>
-<%= link_to 'task一覧画面に戻る', tasks_path %>
+<div class="container-fluid">
+  <div class="view_title">
+    <h2>タスク詳細画面</h2>
+  </div>
+  <div class="show_style">
+    <p>タスク名: <%= @task.title %></p>
+    <p>タスク詳細: <%= @task.content %></p>
+    <p>終了期限：<%= @task.deadline.strftime("%Y年%m月%d日") if @task.deadline.present? %></p>
+    <%= link_to 'task一覧画面に戻る', tasks_path %>
+  </div>
+</div>
