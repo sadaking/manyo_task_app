@@ -14,14 +14,26 @@
       </div>
     <% end %>
     <%= form_with(model: @user, local: true) do |f| %>
+    <div class="user_name">
       <%= f.label :name %>
       <%= f.text_field :name %>
+    </div>
+      <br>
+    <div class="user_email">
       <%= f.label :email %>
       <%= f.email_field :email %>
+    </div>
+      <br>
+    <div class="user_password">
       <%= f.label :password %>
       <%= f.password_field :password %>
+    </div>
+      <br>
+    <div class="user_password_confirmation">
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
+    </div>
+      <br>
       <%= f.submit "登録する" %>
     <% end %>
   </div>

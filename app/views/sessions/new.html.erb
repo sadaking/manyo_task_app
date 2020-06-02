@@ -1,10 +1,16 @@
 <div class="new_style">
   <h2>Log in</h2>
   <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+  <div class="user_email">
     <%= f.label :email %>
     <%= f.email_field :email %>
+  </div>
+    <br>
+  <div class="user_password">
     <%= f.label :password %>
     <%= f.password_field :password %>
+  </div>
+    <br>
     <%= f.submit "ログイン" %>
   <% end %>
 </div>
