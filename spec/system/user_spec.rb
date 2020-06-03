@@ -115,8 +115,6 @@ RSpec.describe 'ユーザ登録・ログイン・ログアウト機能', type: :
         visit edit_admin_user_path(id: @user.id)
         fill_in 'user_name', with: 'test'
         fill_in 'user_email', with: 'test@example.com'
-        fill_in 'user_password', with: '00000000'
-        fill_in 'user_password_confirmation', with: '00000000'
         click_button '登録する'
         expect(page).to have_content "test"
       end
