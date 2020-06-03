@@ -1,0 +1,40 @@
+<div class="view_title">
+  <h2>ユーザー詳細画面</h2>
+</div>
+<div class="container-fluid">
+  <div class="form-group">
+    <br>
+    <p>ユーザー名: <%= @user.name %></p>
+    <p>メールアドレス: <%= @user.email %></p>
+    <% if @user.admin == true %>
+       <p>管理者権限: あり</p>
+    <% else %>
+      <p>管理者権限： なし</p>
+    <% end %>
+
+    <% if @tasks == nil %>
+      <p>現在タスクはありません</p>
+    <% else %>
+      <p>現在のタスク状況</p>
+      <% @tasks.each do |task| %>
+        <div>
+          <p><strong>タイトル：</strong><%= task.title %></p>
+        </div>
+        <div>
+          <p><strong>内容：</strong><%= task.content %></p>
+        </div>
+        <div>
+          <p><strong>終了期限：</strong><%= task.deadline %></p>
+        </div>
+        <div>
+          <p><strong>ステータス：</strong><%= task.status %></p>
+        </div>
+        <div>
+          <p><strong>優先順位：</strong><%= task.priority %></p>
+        </div>
+        <br>
+      <% end %>
+    <% end %>
+    <%= link_to "管理画面へ", admin_users_path %>
+  </div>
+</div>
