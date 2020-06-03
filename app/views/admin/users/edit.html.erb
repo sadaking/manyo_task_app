@@ -16,16 +16,6 @@
       </div>
       <br>
       <div>
-        <%= f.label :password, "パスワード" %>
-        <%= f.password_field :password %>
-      </div>
-      <br>
-      <div>
-        <%= f.label :password_confirmation, "パスワード再入力" %>
-        <%= f.password_field :password_confirmation %>
-      </div>
-      <br>
-      <div>
         <%= f.label :admin, "管理者権限" %>
         <%= f.check_box(:admin, {}, checked_value = "true", unchecked_value = "false" ) %>
       </div>
