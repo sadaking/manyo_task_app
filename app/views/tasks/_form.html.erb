@@ -36,6 +36,15 @@
         <%= form.select :priority, {高:"高",中:"中",低:"低"}, include_blank: "選択して下さい" %>
       </div>
       <br>
+      <div class="task_label">
+        <%= form.label :label, "タスクにラベルをつけてみよう↓↓" %>
+        <br>
+        <% Label.all.each do |label| %>
+          <%= form.check_box :label_ids, { multiple: true, include_hidden: false }, label[:id] %>
+          <label class='btn-sticky'><%= label.name %></label>
+        <% end %>
+      </div>
+      <br>
       <%= form.submit name="登録する" %>
     <% end %>
     <br>
