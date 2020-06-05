@@ -39,10 +39,7 @@
       <div class="task_label">
         <%= form.label :label, "タスクにラベルをつけてみよう↓↓" %>
         <br>
-        <% Label.all.each do |label| %>
-          <%= form.check_box :label_ids, { multiple: true, include_hidden: false }, label[:id] %>
-          <label class='btn-sticky'><%= label.name %></label>
-        <% end %>
+        <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
       </div>
       <br>
       <%= form.submit name="登録する" %>

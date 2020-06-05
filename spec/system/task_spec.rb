@@ -115,7 +115,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         select '完了', from: "task_status"
         select '高', from: "task_priority"
         check "Self study"
-        click_on "登録する", from: "label_ids"
+        click_on "登録する"
         expect(page).to have_content '万葉課題の提出'
       end
     end
