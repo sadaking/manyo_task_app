@@ -36,6 +36,12 @@
         <%= form.select :priority, {高:"高",中:"中",低:"低"}, include_blank: "選択して下さい" %>
       </div>
       <br>
+      <div class="task_label">
+        <%= form.label :label, "タスクにラベルをつけてみよう↓↓" %>
+        <br>
+        <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+      </div>
+      <br>
       <%= form.submit name="登録する" %>
     <% end %>
     <br>

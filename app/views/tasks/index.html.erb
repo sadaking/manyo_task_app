@@ -11,10 +11,12 @@
       <%= form.text_field :title %>
       <%= form.label :status_search, "状態検索" %>
       <%= form.select :status, {未着手:"未着手",着手中:"着手中",完了:"完了"}, include_blank: "選択して下さい" %>
+      <%= form.label :label_id_search, "ラベル絞込" %>
+      <%= form.select("label_id", Label.all.pluck(:name, :id), { include_blank:"選択する",include_hidden: false }) %>
       <%= form.hidden_field :search, value:"true" %>
-
       <%= form.submit name="検索する" %>
     <% end %>
+
     <br>
     <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class:"btn btn-primary" %>
     <%= link_to "優先順位でソートする", tasks_path(sort_priority: "true"), class:"btn btn-primary " %>
@@ -41,6 +43,11 @@
       <td><%= link_to '詳細', task_path(task.id) , class: "btn btn-info"%></td>
       <td><%= link_to "編集", edit_task_path(task.id), class: "btn btn-info" %></td>
       <td><%= link_to '削除', task_path(task.id), class: "btn btn-danger", method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+      <td class="task_label">
+        <% task.labels.each do |label| %>
+          <label class='btn-sticky'><%= label.name  %></label>
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </table>

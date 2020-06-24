@@ -17,3 +17,11 @@
                admin: admin,
               )
 end
+
+
+  Label.create([
+    { name: "Self study" },
+    { name: "Class" },
+    { name: "Question" },
+    { name: "on hold" },
+  ])

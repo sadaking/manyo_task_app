@@ -20,6 +20,10 @@ before_action :require_login
         @tasks = Task.status_search(params[:status]).page(params[:page]).per(10)
       end
     end
+
+    if params[:label_id].present?
+      @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] })
+    end
   end
 
   def new
@@ -59,7 +63,7 @@ before_action :require_login
 
   private
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status, :priority)
+    params.require(:task).permit(:title, :content, :deadline, :status, :priority, label_ids: [])
   end
 
   def set_task
